@@ -71,7 +71,13 @@ defmodule Snitch.Core.Mixfile do
       {:inch_ex, "~> 0.5.6", only: [:docs, :dev]},
 
       # csp
-      {:aruspex, github: "oyeb/aruspex", branch: "tweaks"}
+      {:aruspex, github: "oyeb/aruspex", branch: "tweaks"},
+
+      # job queue
+      {:honeydew, "~> 1.1.6"},
+
+      # analytics
+      {:hydrus, github: "aviabird/hydrus", branch: "develop"}
     ]
   end
 

@@ -17,9 +17,6 @@ after_script:
 
 matrix:
   include:
-  - elixir: "1.5.3"
-    script:
-      - mix coveralls.json --umbrella
   - elixir: "1.6.5"
 
 addons:

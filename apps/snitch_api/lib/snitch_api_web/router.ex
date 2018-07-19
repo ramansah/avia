@@ -40,6 +40,7 @@ defmodule SnitchApiWeb.Router do
     resources("/taxons", TaxonController, only: [:index, :show])
     resources("/ratings", RatingController, only: [:index, :show])
     resources("/reviews", ReviewController, only: [:create, :update, :delete])
+    get("/product/:id/reviews", ProductController, :reviews)
     get("/product/:id/rating-summary", ProductController, :rating_summary)
     resources("/addresses", AddressController, only: [:index, :show, :create, :update])
   end

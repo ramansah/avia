@@ -54,6 +54,8 @@ defmodule Snitch.Domain.Order.DefaultMachine do
   alias Snitch.Data.Schema.Order
   alias Snitch.Domain.Order.Transitions
 
+  alias Snitch.Domain.Payment.DefaultMachine, as: PMachine
+
   state_machine Order,
                 :state,
                 ~w(cart address payment delivery processing rts shipping complete cancelled)a do
@@ -66,6 +68,10 @@ defmodule Snitch.Domain.Order.DefaultMachine do
 
     event(:save_shipping_preferences, %{from: [:address], to: :delivery}, fn context ->
       Transitions.persist_shipping_preferences(context)
+    end)
+
+    event(:initiate_payment, %{from: [:delivery], to: :payment}, fn context ->
+      PMachine.initiate_payment(context)
     end)
 
     event(:confirm, %{from: [:payment], to: :processing}, fn context ->

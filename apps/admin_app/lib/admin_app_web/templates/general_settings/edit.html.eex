@@ -1,0 +1,6 @@
+<div class="card container text-uppercase">
+  <h4><a href="/roles">General Settings</a> / Edit</h4>
+  <hr/>
+  <%= render("_form.html", action: general_settings_path(@conn, :update, @setting),
+    conn: @conn, changeset: @changeset, setting: @setting) %>
+</div>

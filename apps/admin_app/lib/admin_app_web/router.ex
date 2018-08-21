@@ -55,7 +55,7 @@ defmodule AdminAppWeb.Router do
     resources("/permissions", PermissionController)
     resources("/variation_themes", VariationThemeController, except: [:show])
     resources("/prototypes", PrototypeController, except: [:show])
-
+    resources("/general-settings", GeneralSettingsController, except: [:show, :delete, :index])
     resources("/products", ProductController)
   end
 

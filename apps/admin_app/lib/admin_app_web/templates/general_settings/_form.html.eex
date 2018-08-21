@@ -1,0 +1,10 @@
+<%= form_for @changeset, general_settings_path(@conn, :update, @setting),
+    [as: :general_settings], fn f -> %>
+      <%= input f, :site_name %>
+      <%= input f, :seo_title %>
+      <%= input f, :meta_keywords %>
+      <%= input f, :meta_description %>
+      <%= input f, :mail_from %>
+      <%= submit "Submit", class: "btn btn-primary submit-btn" %>
+  <% end %>
+  

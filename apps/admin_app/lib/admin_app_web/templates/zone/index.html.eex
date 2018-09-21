@@ -1,0 +1,35 @@
+<div class="list-container">
+  <div class="row m-0 list-header">
+    <div class="col-10 p-0">
+      <h2>Zones</h2>
+    </div>
+    <div class="col-2 p-0 float-right text-right">
+      <%= link("New Zone", to: "/zones/new", class: "btn btn-primary")%>
+    </div>
+  </div>
+  <div class="col-xs-12" id="content" data-hook="">
+    <table class="table" id="listing_zones" data-hook="">
+      <thead>
+        <tr data-hook="zones_header">
+          <th>Name</th>
+          <th>
+            Description
+          </th>
+          <th>Zone Type</th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for zone <- @zones do %>
+          <tr id="spree_zone_1" data-hook="zones_row">
+            <td><%= zone.name %></td>
+            <td><%= zone.description %></td>
+            <td>
+              <%= get_zone_by_type(zone) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

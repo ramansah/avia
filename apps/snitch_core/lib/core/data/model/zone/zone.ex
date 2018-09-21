@@ -7,6 +7,7 @@ defmodule Snitch.Data.Model.Zone do
   alias Snitch.Data.Model.{CountryZone, StateZone}
   alias Snitch.Data.Schema.Zone
   alias Snitch.Repo
+  import Ecto.Query
 
   defmacro __using__(_) do
     quote do
@@ -103,5 +104,11 @@ defmodule Snitch.Data.Model.Zone do
     a
     |> MapSet.difference(b)
     |> MapSet.to_list()
+  end
+
+  def get_all() do
+    Zone
+    |> order_by([z], asc: z.name)
+    |> Repo.all()
   end
 end

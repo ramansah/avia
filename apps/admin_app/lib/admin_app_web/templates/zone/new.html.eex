@@ -1,0 +1,68 @@
+<div class="list-container">
+  <div class="pt-3 pb-0 pr-3 pl-3 back"> <img src="/images/left-arrow.svg" width="20" height="20" class="d-inline-block align-top" alt="">  <a href="/zones">Zones</a> </div>
+  <h4 class="p-3 m-0">Add New Zone</h4>
+  <div class="col-12">
+    <div class="card col-12">
+      <%= form_for @changeset, zone_path(@conn, :create), fn f -> %>
+        <div class="form-group row ">
+          <label for="inputEmail3" class="col-sm-3 col-form-label">
+            <div class="label required">
+              Name
+            </div>
+          </label>
+          <div class="col-sm-9">           
+            <%= input(f, :name)%>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <label for="inputEmail3" class="col-sm-3 col-form-label">
+            <div class="label">
+              Description
+            </div>
+          </label>
+          <div class="col-sm-9">           
+            <%= input(f, :description) %>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <label for="inputEmail3" class="col-sm-3 col-form-label">
+              <div class="label required">
+                Zone Type
+              </div>
+          </label>
+          <div class="col-sm-9"> 
+            <%= select(f, :zone_type, Enum.map(get_zones(), &{&1.name, &1.value}), id: "active-zone") %>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <label for="inputEmail3" class="col-sm-3 col-form-label" id="zone-list">
+            <div class="label required">
+              State
+            </div>
+          </label>
+          <div class="col-sm-9">           
+            <%= multiple_select(f, :members, get_states()) %>
+          </div>
+        </div>
+        <div class="form-group row ">
+          <label for="inputEmail3" class="col-sm-3 col-form-label" id="zone-list">
+            <div class="label required">
+              Country
+            </div>
+          </label>
+          <div class="col-sm-9">           
+            <%= multiple_select(f, :members, get_countries()) %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <%= submit "Submit", class: "btn btn-primary submit-btn col-2" %>
+            <%= link("Cancel", to: zone_path(@conn, :index), class: "btn btn-primary col-2") %>
+          </div>
+        </div>
+      </form>
+      <% end %>
+    </div>
+  </div>
+</div>
+

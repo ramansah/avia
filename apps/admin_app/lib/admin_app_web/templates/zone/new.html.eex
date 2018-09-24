@@ -34,24 +34,24 @@
             <%= select(f, :zone_type, Enum.map(get_zones(), &{&1.name, &1.value}), id: "active-zone") %>
           </div>
         </div>
-        <div class="form-group row ">
+        <div class="form-group row" id="state-zone-list">
           <label for="inputEmail3" class="col-sm-3 col-form-label" id="zone-list">
             <div class="label required">
               State
             </div>
           </label>
           <div class="col-sm-9">           
-            <%= multiple_select(f, :members, get_states()) %>
+            <%= multi_select(f, :state_members, get_states()) %>
           </div>
         </div>
-        <div class="form-group row ">
+        <div class="form-group row" id="country-zone-list">
           <label for="inputEmail3" class="col-sm-3 col-form-label" id="zone-list">
             <div class="label required">
               Country
             </div>
           </label>
           <div class="col-sm-9">           
-            <%= multiple_select(f, :members, get_countries()) %>
+            <%= multi_select(f, :country_members, get_countries()) %>
           </div>
         </div>
         <div class="form-group row">
